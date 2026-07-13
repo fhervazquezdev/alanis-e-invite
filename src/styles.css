@@ -46,122 +46,55 @@ textarea {
 .invite {
   position: relative;
   width: min(100%, 430px);
-  min-height: 760px;
-  padding: 92px 34px 30px;
+  aspect-ratio: 5 / 7;
+  padding: 0;
   overflow: hidden;
-  border: 1px solid rgba(153, 91, 105, 0.32);
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(255, 250, 244, 0.99), rgba(255, 248, 242, 0.99));
+  border-radius: 0;
+  background: #fffaf4;
   box-shadow: 0 28px 76px rgba(119, 76, 83, 0.2);
   text-align: center;
   isolation: isolate;
   animation: inviteIn 720ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
 }
 
-.invite::before,
-.invite::after {
-  content: '';
+.pdf-frame {
   position: absolute;
-  pointer-events: none;
-}
-
-.invite::before {
-  inset: 16px;
-  border: 1.5px solid rgba(153, 91, 105, 0.42);
-  border-radius: 19px;
-}
-
-.invite::after {
-  inset: 26px;
-  border: 1px solid rgba(168, 178, 128, 0.32);
-  border-radius: 15px;
-}
-
-.florals {
-  position: absolute;
-  width: 92px;
-  height: 72px;
-  pointer-events: none;
-}
-
-.florals span {
-  position: absolute;
+  inset: 0;
   display: block;
-  border-radius: 999px 999px 999px 32px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.florals span:nth-child(1),
-.florals span:nth-child(2) {
-  width: 29px;
-  height: 44px;
-  background:
-    radial-gradient(circle at 48% 68%, #fff8f7 0 18%, transparent 19%),
-    linear-gradient(145deg, #db98ab, #f1c3cf);
-}
-
-.florals span:nth-child(1) {
-  left: 3px;
-  top: 14px;
-  transform: rotate(30deg);
-}
-
-.florals span:nth-child(2) {
-  left: 41px;
-  top: 27px;
-  transform: rotate(17deg);
-}
-
-.florals span:nth-child(3),
-.florals span:nth-child(4) {
-  width: 42px;
-  height: 22px;
-  border-radius: 60% 40% 60% 40%;
-  background: linear-gradient(135deg, #aeb789, #d9dcb6);
-}
-
-.florals span:nth-child(3) {
-  left: 31px;
-  top: 2px;
-  transform: rotate(-18deg);
-}
-
-.florals span:nth-child(4) {
-  left: 24px;
-  top: 43px;
-  transform: rotate(-58deg);
-}
-
-.florals-top {
-  top: 32px;
-  left: 34px;
-}
-
-.florals-bottom {
-  right: 27px;
-  bottom: 24px;
-  transform: rotate(180deg);
+.invite-content {
+  position: absolute;
+  inset: 12.8% 10.8% 7.4%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .intro {
   width: min(100%, 310px);
-  margin: 0 auto 28px;
+  margin: 0 auto 9px;
   color: rgba(90, 66, 69, 0.82);
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 1.04rem;
+  font-size: clamp(0.78rem, 2.45vw, 0.92rem);
   font-style: italic;
-  line-height: 1.35;
+  line-height: 1.2;
 }
 
 .name-block {
-  margin-bottom: 18px;
+  margin-bottom: 7px;
 }
 
 h1 {
   margin: 0;
   color: var(--rose);
   font-family: 'Great Vibes', 'Brush Script MT', 'Segoe Script', cursive;
-  font-size: clamp(5.3rem, 22vw, 7.4rem);
+  font-size: clamp(4.4rem, 18.6vw, 6rem);
   font-weight: 400;
   line-height: 0.74;
   text-shadow: 0 9px 18px rgba(111, 68, 77, 0.13);
@@ -180,15 +113,15 @@ h1 {
   justify-content: center;
   gap: 9px;
   width: min(100%, 286px);
-  min-height: 46px;
-  margin: 0 auto 16px;
-  padding: 10px 16px;
+  min-height: 33px;
+  margin: 0 auto 8px;
+  padding: 7px 12px;
   border: 1px solid rgba(153, 91, 105, 0.16);
   border-radius: 999px;
   color: #6a5052;
   background: rgba(255, 255, 255, 0.45);
   box-shadow: 0 10px 24px rgba(119, 76, 83, 0.07);
-  font-size: 0.88rem;
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -200,25 +133,25 @@ h1 {
 
 .event-details {
   display: grid;
-  gap: 8px;
-  margin: 0 auto 14px;
+  gap: 4px;
+  margin: 0 auto 7px;
 }
 
 .event-details article,
 .event-details a {
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 19px 1fr;
   align-items: center;
-  gap: 10px;
-  min-height: 52px;
-  padding: 9px 12px;
-  border: 1px solid rgba(153, 91, 105, 0.14);
-  border-radius: 16px;
+  gap: 7px;
+  min-height: 30px;
+  padding: 2px 3px;
+  border: 0;
+  border-radius: 0;
   color: #604a4c;
-  background: rgba(255, 255, 255, 0.48);
+  background: transparent;
   text-align: left;
   text-decoration: none;
-  box-shadow: 0 9px 22px rgba(119, 76, 83, 0.055);
+  box-shadow: none;
 }
 
 .event-details div,
@@ -230,24 +163,24 @@ h1 {
   display: block;
   color: var(--rose);
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 0.96rem;
+  font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.1;
 }
 
 .event-details span {
   display: block;
-  margin-top: 2px;
-  font-size: 0.82rem;
-  line-height: 1.25;
+  margin-top: 1px;
+  font-size: 0.64rem;
+  line-height: 1.12;
 }
 
 .rsvp {
   position: relative;
   display: grid;
-  gap: 8px;
-  margin: 0 auto;
-  padding: 12px;
+  gap: 5px;
+  margin: auto auto 0;
+  padding: 8px;
   border: 1px solid rgba(153, 91, 105, 0.16);
   border-radius: 18px;
   background: rgba(255, 250, 244, 0.72);
@@ -258,7 +191,7 @@ h1 {
   margin: 0 0 2px;
   color: var(--rose);
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .input-wrap,
@@ -294,14 +227,14 @@ textarea {
 
 input,
 select {
-  min-height: 35px;
-  padding: 0 10px;
+  min-height: 28px;
+  padding: 0 9px;
 }
 
 textarea {
   resize: vertical;
-  min-height: 54px;
-  padding: 8px 10px;
+  min-height: 42px;
+  padding: 7px 9px;
 }
 
 input:focus,
@@ -314,8 +247,8 @@ textarea:focus {
 
 .rsvp-row {
   display: grid;
-  grid-template-columns: 1fr 96px;
-  gap: 8px;
+  grid-template-columns: 1fr 76px;
+  gap: 6px;
 }
 
 .toggle {
@@ -328,7 +261,7 @@ textarea:focus {
 }
 
 .toggle button {
-  min-height: 32px;
+  min-height: 25px;
   border: 0;
   border-radius: 10px;
   color: #765b5e;
@@ -347,7 +280,7 @@ textarea:focus {
   align-items: center;
   justify-content: center;
   gap: 7px;
-  min-height: 38px;
+  min-height: 31px;
   border: 0;
   border-radius: 999px;
   color: #fffaf4;
@@ -382,38 +315,20 @@ textarea:focus {
 
   .invite {
     width: 100%;
-    min-height: 100vh;
-    padding: 90px 22px 26px;
-    border: 0;
-    border-radius: 0;
+    max-width: 430px;
   }
 
-  .invite::before {
-    inset: 12px;
-    border-width: 1.5px;
-  }
-
-  .invite::after {
-    inset: 20px;
-  }
-
-  .florals-top {
-    top: 25px;
-    left: 20px;
-  }
-
-  .florals-bottom {
-    right: 18px;
-    bottom: 18px;
+  .invite-content {
+    transform: scale(0.82);
+    transform-origin: top center;
   }
 
   .intro {
-    margin-bottom: 22px;
-    font-size: 0.98rem;
+    margin-bottom: 10px;
   }
 
   h1 {
-    font-size: clamp(5rem, 26vw, 6.4rem);
+    font-size: clamp(4.4rem, 24vw, 5.8rem);
   }
 
   .event-details article,

@@ -30,11 +30,10 @@ function RsvpForm() {
   const [name, setName] = useState('');
   const [attending, setAttending] = useState('yes');
   const [guests, setGuests] = useState('1');
-  const [note, setNote] = useState('');
 
   const message = useMemo(
-    () => buildWhatsAppText({ name, attending, guests, note }),
-    [name, attending, guests, note],
+    () => buildWhatsAppText({ name, attending, guests, note: '' }),
+    [name, attending, guests],
   );
 
   function handleSubmit(event) {
@@ -103,17 +102,6 @@ function RsvpForm() {
         </label>
       </div>
 
-      <label className="input-wrap" htmlFor="note">
-        <span>Mensaje</span>
-        <textarea
-          id="note"
-          value={note}
-          onChange={(event) => setNote(event.target.value)}
-          placeholder="Opcional"
-          rows="2"
-        />
-      </label>
-
       <button className="whatsapp" type="submit">
         <MessageCircle size={17} strokeWidth={1.8} aria-hidden="true" />
         Enviar por WhatsApp
@@ -126,67 +114,57 @@ function App() {
   return (
     <main className="page">
       <section className="invite" aria-labelledby="invite-title">
-        <div className="florals florals-top" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span />
+        <img className="pdf-frame" src="/invite-frame.png" alt="" aria-hidden="true" />
+
+        <div className="invite-content">
+          <p className="intro">
+            Con mucha alegría los invitamos a celebrar el cumpleaños y bautizo de
+            nuestra pequeña
+          </p>
+
+          <header className="name-block">
+            <h1 id="invite-title">Alanis</h1>
+            <p>Cumple:</p>
+          </header>
+
+          <section className="date" aria-label="Fecha del evento">
+            <CalendarDays size={16} strokeWidth={1.7} aria-hidden="true" />
+            <span>14 de noviembre, 2026</span>
+          </section>
+
+          <section className="event-details" aria-label="Detalles del evento">
+            <article>
+              <Church size={15} strokeWidth={1.7} aria-hidden="true" />
+              <div>
+                <strong>Ceremonia: 12:00 pm</strong>
+                <span>Rectoría Santa Madre Teresa de Calcuta</span>
+              </div>
+            </article>
+
+            <article>
+              <Gift size={15} strokeWidth={1.7} aria-hidden="true" />
+              <div>
+                <strong>Recepción: 3:00 pm</strong>
+                <span>Jardín de eventos Valash</span>
+              </div>
+            </article>
+
+            <a href={mapUrl} target="_blank" rel="noreferrer">
+              <MapPin size={15} strokeWidth={1.7} aria-hidden="true" />
+              <span>Islas Malvinas 217, Televisora, 21337 Mexicali, B.C.</span>
+            </a>
+
+            <article>
+              <Shirt size={15} strokeWidth={1.7} aria-hidden="true" />
+              <div>
+                <strong>Código de vestimenta</strong>
+                <span>Coquette | Tonos rosa o pastel</span>
+              </div>
+            </article>
+          </section>
+
+          <RsvpForm />
         </div>
-
-        <div className="florals florals-bottom" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-
-        <p className="intro">
-          Con mucha alegría los invitamos a celebrar el cumpleaños y bautizo de
-          nuestra pequeña
-        </p>
-
-        <header className="name-block">
-          <h1 id="invite-title">Alanis</h1>
-          <p>Cumple:</p>
-        </header>
-
-        <section className="date" aria-label="Fecha del evento">
-          <CalendarDays size={18} strokeWidth={1.7} aria-hidden="true" />
-          <span>14 de noviembre, 2026</span>
-        </section>
-
-        <section className="event-details" aria-label="Detalles del evento">
-          <article>
-            <Church size={17} strokeWidth={1.7} aria-hidden="true" />
-            <div>
-              <strong>Ceremonia: 12:00 pm</strong>
-              <span>Rectoría Santa Madre Teresa de Calcuta</span>
-            </div>
-          </article>
-
-          <article>
-            <Gift size={17} strokeWidth={1.7} aria-hidden="true" />
-            <div>
-              <strong>Recepción: 3:00 pm</strong>
-              <span>Jardín de eventos Valash</span>
-            </div>
-          </article>
-
-          <a href={mapUrl} target="_blank" rel="noreferrer">
-            <MapPin size={17} strokeWidth={1.7} aria-hidden="true" />
-            <span>Islas Malvinas 217, Televisora, 21337 Mexicali, B.C.</span>
-          </a>
-
-          <article>
-            <Shirt size={17} strokeWidth={1.7} aria-hidden="true" />
-            <div>
-              <strong>Código de vestimenta</strong>
-              <span>Coquette | Tonos rosa o pastel</span>
-            </div>
-          </article>
-        </section>
-
-        <RsvpForm />
       </section>
     </main>
   );

@@ -5,3 +5,4 @@ reference
 .env
 .env.local
 npm-debug.log*
+public/original-invite-fresh.png
