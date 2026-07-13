@@ -103,27 +103,13 @@ function RsvpForm() {
   );
 }
 
-function FloralCorner({ position }) {
-  return (
-    <div className={`floral floral-${position}`} aria-hidden="true">
-      <i />
-      <i />
-      <i />
-      <i />
-      <i />
-    </div>
-  );
-}
-
 function App() {
   return (
     <main className="page">
       <section className="invite" aria-labelledby="invite-title">
-        <img className="bow" src="/bow-cutout.png" alt="" aria-hidden="true" />
-        <FloralCorner position="top" />
-        <FloralCorner position="bottom" />
-
         <div className="content">
+          <img className="bow" src="/bow-cutout.png" alt="" aria-hidden="true" />
+
           <p className="intro">
             Con mucha alegría los invitamos a celebrar el cumpleaños y bautizo de
             nuestra pequeña

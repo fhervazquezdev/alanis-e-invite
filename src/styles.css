@@ -57,93 +57,12 @@ select {
 }
 
 .bow {
-  position: absolute;
-  top: 24px;
-  left: 50%;
-  width: 300px;
-  height: auto;
-  transform: translateX(-50%);
-  opacity: 0.92;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.floral {
-  position: absolute;
-  width: 118px;
-  height: 92px;
-  z-index: 6;
-  pointer-events: none;
-}
-
-.floral i {
-  position: absolute;
   display: block;
-}
-
-.floral i:nth-child(1),
-.floral i:nth-child(2) {
-  width: 34px;
-  height: 52px;
-  border-radius: 999px 999px 999px 34px;
-  background:
-    radial-gradient(circle at 48% 68%, #fff8f5 0 17%, transparent 18%),
-    linear-gradient(145deg, #d993a8, #f0c2ce);
-}
-
-.floral i:nth-child(1) {
-  left: 6px;
-  top: 22px;
-  transform: rotate(28deg);
-}
-
-.floral i:nth-child(2) {
-  left: 52px;
-  top: 36px;
-  transform: rotate(14deg);
-}
-
-.floral i:nth-child(3),
-.floral i:nth-child(4),
-.floral i:nth-child(5) {
-  border-radius: 60% 40% 64% 36%;
-  background: linear-gradient(135deg, var(--sage), var(--sage-soft));
-}
-
-.floral i:nth-child(3) {
-  left: 38px;
-  top: 7px;
-  width: 58px;
-  height: 30px;
-  transform: rotate(-16deg);
-}
-
-.floral i:nth-child(4) {
-  left: 31px;
-  top: 59px;
-  width: 40px;
-  height: 22px;
-  transform: rotate(-58deg);
-}
-
-.floral i:nth-child(5) {
-  left: 6px;
-  top: 56px;
-  width: 25px;
-  height: 14px;
-  opacity: 0.78;
-  transform: rotate(-30deg);
-}
-
-.floral-top {
-  top: 41px;
-  left: 42px;
-}
-
-.floral-bottom {
-  right: 42px;
-  bottom: 35px;
-  transform: rotate(180deg);
+  width: min(100%, 300px);
+  height: auto;
+  margin: 0 auto 12px;
+  opacity: 0.92;
+  pointer-events: none;
 }
 
 .content {
@@ -153,7 +72,7 @@ select {
   flex-direction: column;
   min-height: 800px;
   margin: 38px 28px 28px;
-  padding: 112px 38px 30px;
+  padding: 30px 38px 30px;
   border-radius: 30px;
   background:
     radial-gradient(circle at 50% 5%, rgba(248, 205, 217, 0.34), transparent 22%),
@@ -406,23 +325,8 @@ select:focus {
   }
 
   .bow {
-    top: 14px;
-    width: 230px;
-    transform: translateX(-50%);
-  }
-
-  .floral-top {
-    top: 32px;
-    left: 21px;
-    transform: scale(0.9);
-    transform-origin: top left;
-  }
-
-  .floral-bottom {
-    right: 21px;
-    bottom: 22px;
-    transform: rotate(180deg) scale(0.88);
-    transform-origin: bottom right;
+    width: min(100%, 230px);
+    margin-bottom: 10px;
   }
 
   .intro {
