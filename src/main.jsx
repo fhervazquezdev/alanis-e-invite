@@ -120,12 +120,7 @@ function App() {
     <main className="page">
       <section className="invite" aria-labelledby="invite-title">
         <div className="frame" aria-hidden="true" />
-        <div className="bow" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
+        <img className="bow" src="/bow.png" alt="" aria-hidden="true" />
         <FloralCorner position="top" />
         <FloralCorner position="bottom" />
 
