@@ -119,7 +119,7 @@ function App() {
   return (
     <main className="page">
       <section className="invite" aria-labelledby="invite-title">
-        <img className="bow" src="/bow.png" alt="" aria-hidden="true" />
+        <img className="bow" src="/bow-cutout.png" alt="" aria-hidden="true" />
         <FloralCorner position="top" />
         <FloralCorner position="bottom" />
 
