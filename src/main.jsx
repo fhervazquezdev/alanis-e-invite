@@ -15,7 +15,7 @@ import '@fontsource/great-vibes/400.css';
 import './styles.css';
 
 const mapUrl = 'https://maps.app.goo.gl/gtKfmiqHxifdzhKw5';
-const whatsappUrl = 'https://api.whatsapp.com/send';
+const whatsappUrl = 'https://api.whatsapp.com/send?phone=526861896576';
 
 function buildWhatsAppText({ name, attending, guests, note }) {
   const response =
@@ -56,7 +56,7 @@ function RsvpForm() {
     }
 
     const query = new URLSearchParams({ text: message });
-    window.open(`${whatsappUrl}?${query.toString()}`, '_blank', 'noopener,noreferrer');
+    window.open(`${whatsappUrl}&${query.toString()}`, '_blank', 'noopener,noreferrer');
   }
 
   return (
@@ -126,7 +126,7 @@ function RsvpForm() {
 
       <button className="whatsapp" type="submit">
         <MessageCircle size={17} strokeWidth={1.8} aria-hidden="true" />
-        Enviar por WhatsApp
+        Confirmar
       </button>
     </form>
   );
@@ -137,7 +137,7 @@ function App() {
     <main className="page">
       <section className="invite" aria-labelledby="invite-title">
         <div className="content">
-          <img className="bow" src="/bow.png" alt="" aria-hidden="true" />
+          <img className="bow drop-shadow-lg" src="/bow.png" alt="" aria-hidden="true" />
 
           <p className="intro">
             Con mucha alegría los invitamos a celebrar el cumpleaños y bautizo de
@@ -145,7 +145,7 @@ function App() {
           </p>
 
           <header className="hero">
-            <h1 id="invite-title">Alanis</h1>
+            <h1 id="invite-title block mt-10">Alanis</h1>
             <div className="age">
               <span>Cumple:</span>
               <strong>2</strong>

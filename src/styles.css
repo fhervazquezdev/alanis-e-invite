@@ -58,10 +58,11 @@ select {
 
 .bow {
   display: block;
-  width: min(100%, 300px);
+  width: 100%;
   height: auto;
-  margin: 0 auto 12px;
+  margin: -3rem auto 0;
   opacity: 0.92;
+  max-width: 200px;
   pointer-events: none;
 }
 
@@ -82,14 +83,15 @@ select {
 }
 
 .intro {
-  max-width: 342px;
-  margin: 0 auto 24px;
+  display: block;
+  max-width: 400px;
+  margin: 1rem auto;
   padding: 6px 10px;
   border-radius: 16px;
   color: rgba(92, 67, 70, 0.88);
   background: transparent;
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 1.02rem;
+  font-size: 1.5rem;
   font-style: italic;
   line-height: 1.32;
 }
@@ -99,7 +101,7 @@ select {
 }
 
 h1 {
-  margin: 0;
+  margin: 1rem 0 0;
   color: var(--rose);
   font-family: 'Great Vibes', 'Brush Script MT', 'Segoe Script', cursive;
   font-size: clamp(6.4rem, 18vw, 8.8rem);
