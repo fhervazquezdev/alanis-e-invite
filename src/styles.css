@@ -172,13 +172,11 @@ h1 {
 }
 
 .details .directions-link {
-  grid-template-columns: 18px 1fr 20px;
-  min-height: 34px;
-  margin-top: 7px;
-  padding: 6px 8px;
+  grid-template-columns: 24px 1fr 24px;
+  min-height: 58px;
+  padding: 9px 12px;
   border: 1px solid rgba(151, 91, 103, 0.28);
   background: rgba(255, 255, 255, 0.72);
-  font-size: 0.72rem;
   transition:
     border-color 180ms ease,
     background 180ms ease,
@@ -195,12 +193,6 @@ h1 {
 .directions-icon {
   justify-self: center;
   color: var(--rose);
-}
-
-.details .directions-link span {
-  margin-top: 0;
-  font-size: inherit;
-  line-height: 1.15;
 }
 
 .details strong {
