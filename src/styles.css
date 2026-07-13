@@ -38,8 +38,8 @@ select {
   padding: clamp(18px, 4vw, 48px);
   overflow-x: hidden;
   background:
-    linear-gradient(rgba(255, 245, 247, 0.24), rgba(255, 245, 247, 0.24)),
-    url('/pattern.png') center / 420px auto;
+    radial-gradient(circle at 18% 12%, rgba(236, 190, 201, 0.25), transparent 30%),
+    linear-gradient(135deg, #fbf4ee 0%, #f7e7e3 48%, #fbf2ed 100%);
 }
 
 .invite {
@@ -49,8 +49,8 @@ select {
   overflow: hidden;
   border-radius: 34px;
   background:
-    radial-gradient(circle at 50% 6%, rgba(248, 205, 217, 0.42), transparent 21%),
-    linear-gradient(180deg, #fffaf5 0%, #fff7f0 70%, #fff4ed 100%);
+    linear-gradient(rgba(255, 245, 247, 0.16), rgba(255, 245, 247, 0.16)),
+    url('/pattern.png') center / 410px auto;
   box-shadow: 0 34px 100px rgba(113, 71, 80, 0.24);
   isolation: isolate;
   animation: inviteIn 700ms cubic-bezier(0.2, 0.72, 0.2, 1) both;
@@ -175,7 +175,13 @@ select {
   display: flex;
   flex-direction: column;
   min-height: 900px;
-  padding: 176px 92px 62px;
+  margin: 72px 58px 50px;
+  padding: 118px 54px 40px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 5%, rgba(248, 205, 217, 0.34), transparent 22%),
+    linear-gradient(180deg, #fffaf5 0%, #fff7f1 70%, #fff4ed 100%);
+  box-shadow: 0 18px 44px rgba(113, 71, 80, 0.1);
   text-align: center;
 }
 
@@ -185,7 +191,7 @@ select {
   padding: 6px 10px;
   border-radius: 16px;
   color: rgba(92, 67, 70, 0.88);
-  background: rgba(255, 250, 246, 0.55);
+  background: transparent;
   font-family: 'DM Serif Display', Georgia, serif;
   font-size: 1.02rem;
   font-style: italic;
@@ -237,7 +243,7 @@ h1 {
   border: 1px solid rgba(151, 91, 103, 0.16);
   border-radius: 999px;
   color: #694f52;
-  background: rgba(255, 255, 255, 0.52);
+  background: rgba(255, 255, 255, 0.62);
   box-shadow: 0 10px 24px rgba(113, 71, 80, 0.07);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
@@ -294,7 +300,7 @@ h1 {
   padding: 12px;
   border: 1px solid rgba(151, 91, 103, 0.18);
   border-radius: 18px;
-  background: rgba(255, 250, 244, 0.84);
+  background: rgba(255, 250, 244, 0.92);
   box-shadow: 0 14px 28px rgba(113, 71, 80, 0.08);
 }
 
