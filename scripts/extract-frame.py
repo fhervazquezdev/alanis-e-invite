@@ -121,11 +121,16 @@ def keep_pixel(x, y, w, h):
     return vertical_frame or horizontal_frame or top_left_floral or bottom_right_floral or outer_edge
 
 
-def main():
-    if len(sys.argv) != 3:
-        raise SystemExit("Usage: extract-frame.py INPUT.png OUTPUT.png")
+def keep_bow_pixel(x, y, w, h):
+    sx = x / w
+    sy = y / h
 
-    width, height, rows = read_png(sys.argv[1])
+    # Top-center bow from the Canva render. Kept as a full-size transparent
+    # overlay so it registers to the same coordinates as the extracted frame.
+    return 0.305 <= sx <= 0.695 and 0.045 <= sy <= 0.255
+
+
+def extract(rows, width, height, keep):
     rgba_rows = []
 
     for y, row in enumerate(rows):
@@ -133,11 +138,22 @@ def main():
         for x in range(width):
             offset = x * 3
             r, g, b = row[offset], row[offset + 1], row[offset + 2]
-            alpha = 255 if keep_pixel(x, y, width, height) else 0
+            alpha = 255 if keep(x, y, width, height) else 0
             rgba.extend((r, g, b, alpha))
         rgba_rows.append(rgba)
 
-    write_png(sys.argv[2], width, height, rgba_rows)
+    return rgba_rows
+
+
+def main():
+    if len(sys.argv) not in (3, 4):
+        raise SystemExit("Usage: extract-frame.py INPUT.png FRAME_OUTPUT.png [BOW_OUTPUT.png]")
+
+    width, height, rows = read_png(sys.argv[1])
+    write_png(sys.argv[2], width, height, extract(rows, width, height, keep_pixel))
+
+    if len(sys.argv) == 4:
+        write_png(sys.argv[3], width, height, extract(rows, width, height, keep_bow_pixel))
 
 
 if __name__ == "__main__":

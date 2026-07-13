@@ -114,6 +114,7 @@ function App() {
   return (
     <main className="page">
       <section className="invite" aria-labelledby="invite-title">
+        <img className="pdf-bow" src="/invite-bow.png" alt="" aria-hidden="true" />
         <img className="pdf-frame" src="/invite-frame.png" alt="" aria-hidden="true" />
 
         <div className="invite-content">
