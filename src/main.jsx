@@ -150,17 +150,18 @@ function App() {
               <div>
                 <strong>Recepción: 3:00 pm</strong>
                 <span>Jardín de eventos Valash</span>
+                <a className="directions-link" href={mapUrl} target="_blank" rel="noreferrer">
+                  <MapPin size={14} strokeWidth={1.8} aria-hidden="true" />
+                  <span>Islas Malvinas 217, Televisora, 21337 Mexicali, B.C.</span>
+                  <Navigation
+                    className="directions-icon"
+                    size={14}
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
+                </a>
               </div>
             </article>
-
-            <a className="directions-link" href={mapUrl} target="_blank" rel="noreferrer">
-              <MapPin size={17} strokeWidth={1.7} aria-hidden="true" />
-              <div>
-                <strong>Toca para abrir ubicación</strong>
-                <span>Islas Malvinas 217, Televisora, 21337 Mexicali, B.C.</span>
-              </div>
-              <Navigation className="directions-icon" size={15} strokeWidth={2} aria-hidden="true" />
-            </a>
 
             <article>
               <Shirt size={17} strokeWidth={1.7} aria-hidden="true" />
