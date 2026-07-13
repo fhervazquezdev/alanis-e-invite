@@ -108,7 +108,7 @@ function App() {
     <main className="page">
       <section className="invite" aria-labelledby="invite-title">
         <div className="content">
-          <img className="bow" src="/bow-cutout.png" alt="" aria-hidden="true" />
+          <img className="bow" src="/bow.png" alt="" aria-hidden="true" />
 
           <p className="intro">
             Con mucha alegría los invitamos a celebrar el cumpleaños y bautizo de
