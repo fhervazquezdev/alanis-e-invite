@@ -171,6 +171,30 @@ h1 {
   text-decoration: none;
 }
 
+.details .directions-link {
+  grid-template-columns: 24px 1fr 24px;
+  min-height: 58px;
+  padding: 9px 12px;
+  border: 1px solid rgba(151, 91, 103, 0.28);
+  background: rgba(255, 255, 255, 0.72);
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.details .directions-link:hover,
+.details .directions-link:focus-visible {
+  border-color: rgba(151, 91, 103, 0.52);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.directions-icon {
+  justify-self: center;
+  color: var(--rose);
+}
+
 .details strong {
   display: block;
   color: var(--rose);

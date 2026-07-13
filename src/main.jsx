@@ -1,6 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { CalendarDays, Church, Gift, MapPin, MessageCircle, Shirt } from 'lucide-react';
+import {
+  CalendarDays,
+  Church,
+  Gift,
+  MapPin,
+  MessageCircle,
+  Navigation,
+  Shirt,
+} from 'lucide-react';
 import '@fontsource/dm-serif-display/400.css';
 import '@fontsource/dm-serif-display/400-italic.css';
 import '@fontsource/great-vibes/400.css';
@@ -145,9 +153,13 @@ function App() {
               </div>
             </article>
 
-            <a href={mapUrl} target="_blank" rel="noreferrer">
+            <a className="directions-link" href={mapUrl} target="_blank" rel="noreferrer">
               <MapPin size={17} strokeWidth={1.7} aria-hidden="true" />
-              <span>Islas Malvinas 217, Televisora, 21337 Mexicali, B.C.</span>
+              <div>
+                <strong>Toca para abrir ubicación</strong>
+                <span>Islas Malvinas 217, Televisora, 21337 Mexicali, B.C.</span>
+              </div>
+              <Navigation className="directions-icon" size={15} strokeWidth={2} aria-hidden="true" />
             </a>
 
             <article>
