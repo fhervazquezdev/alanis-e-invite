@@ -126,12 +126,6 @@ function App() {
   return (
     <main className="page">
       <section className="invite" aria-labelledby="invite-title">
-        <div className="bow" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
-
         <div className="florals florals-top" aria-hidden="true">
           <span />
           <span />
