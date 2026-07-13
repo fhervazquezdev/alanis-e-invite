@@ -17,27 +17,34 @@ import './styles.css';
 const mapUrl = 'https://maps.app.goo.gl/gtKfmiqHxifdzhKw5';
 const whatsappUrl = 'https://api.whatsapp.com/send';
 
-function buildWhatsAppText({ name, attending, guests }) {
+function buildWhatsAppText({ name, attending, guests, note }) {
   const response =
     attending === 'yes'
       ? `Sí asistiré con ${guests} ${Number(guests) === 1 ? 'persona' : 'personas'}.`
       : 'No podré asistir.';
 
-  return [
+  const lines = [
     'Hola, quiero confirmar mi asistencia al cumpleaños y bautizo de Alanis.',
     `Nombre: ${name.trim()}`,
     `Respuesta: ${response}`,
-  ].join('\n');
+  ];
+
+  if (note.trim()) {
+    lines.push(`Mensaje: ${note.trim()}`);
+  }
+
+  return lines.join('\n');
 }
 
 function RsvpForm() {
   const [name, setName] = useState('');
   const [attending, setAttending] = useState('yes');
   const [guests, setGuests] = useState('1');
+  const [note, setNote] = useState('');
 
   const message = useMemo(
-    () => buildWhatsAppText({ name, attending, guests }),
-    [name, attending, guests],
+    () => buildWhatsAppText({ name, attending, guests, note }),
+    [name, attending, guests, note],
   );
 
   function submitRsvp(event) {
@@ -68,26 +75,29 @@ function RsvpForm() {
         />
       </label>
 
-      <div className="rsvp-controls">
-        <div className="attendance" aria-label="Asistencia">
+      <div className="attendance-field">
+        <span>¿Asistirás al evento?</span>
+        <div className="attendance" aria-label="Confirmar asistencia">
           <button
             type="button"
             className={attending === 'yes' ? 'selected' : ''}
             onClick={() => setAttending('yes')}
           >
-            Sí
+            Sí, asistiré
           </button>
           <button
             type="button"
             className={attending === 'no' ? 'selected' : ''}
             onClick={() => setAttending('no')}
           >
-            No
+            No podré asistir
           </button>
         </div>
+      </div>
 
+      <div className="rsvp-controls">
         <label htmlFor="guests">
-          <span>Personas</span>
+          <span>Número de personas</span>
           <select
             id="guests"
             value={guests}
@@ -102,6 +112,17 @@ function RsvpForm() {
           </select>
         </label>
       </div>
+
+      <label htmlFor="note">
+        <span>Mensaje opcional</span>
+        <textarea
+          id="note"
+          value={note}
+          onChange={(event) => setNote(event.target.value)}
+          placeholder="Ej. Vamos con mucho gusto / Muchas felicidades"
+          rows="3"
+        />
+      </label>
 
       <button className="whatsapp" type="submit">
         <MessageCircle size={17} strokeWidth={1.8} aria-hidden="true" />
