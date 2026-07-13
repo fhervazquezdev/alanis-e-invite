@@ -9,11 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/dm-serif-display": "^5.2.8",
+    "@fontsource/great-vibes": "^5.2.8",
     "@vitejs/plugin-react": "^5.1.1",
     "lucide-react": "^0.468.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "vite": "^7.3.0"
-  },
-  "devDependencies": {}
+  }
 }
