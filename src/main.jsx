@@ -17,10 +17,14 @@ import './styles.css';
 const mapUrl = 'https://maps.app.goo.gl/gtKfmiqHxifdzhKw5';
 const whatsappUrl = 'https://api.whatsapp.com/send?phone=526861896576';
 
-function buildWhatsAppText({ name, attending, guests, note }) {
+function buildWhatsAppText({ name, attending, adults, children, note }) {
+  const adultCount = Number(adults);
+  const childCount = Number(children);
   const response =
     attending === 'yes'
-      ? `Sí asistiré con ${guests} ${Number(guests) === 1 ? 'persona' : 'personas'}.`
+      ? `Sí asistiré con ${adultCount} ${adultCount === 1 ? 'adulto' : 'adultos'} y ${childCount} ${
+          childCount === 1 ? 'niño' : 'niños'
+        }.`
       : 'No podré asistir.';
 
   const lines = [
@@ -39,12 +43,13 @@ function buildWhatsAppText({ name, attending, guests, note }) {
 function RsvpForm() {
   const [name, setName] = useState('');
   const [attending, setAttending] = useState('yes');
-  const [guests, setGuests] = useState('1');
+  const [adults, setAdults] = useState('1');
+  const [children, setChildren] = useState('0');
   const [note, setNote] = useState('');
 
   const message = useMemo(
-    () => buildWhatsAppText({ name, attending, guests, note }),
-    [name, attending, guests, note],
+    () => buildWhatsAppText({ name, attending, adults, children, note }),
+    [name, attending, adults, children, note],
   );
 
   function submitRsvp(event) {
@@ -96,17 +101,33 @@ function RsvpForm() {
       </div>
 
       <div className="rsvp-controls">
-        <label htmlFor="guests">
-          <span>Número de personas</span>
+        <label htmlFor="adults">
+          <span>Adultos</span>
           <select
-            id="guests"
-            value={guests}
-            onChange={(event) => setGuests(event.target.value)}
+            id="adults"
+            value={adults}
+            onChange={(event) => setAdults(event.target.value)}
             disabled={attending === 'no'}
           >
-            {[1, 2, 3, 4, 5, 6].map((guestCount) => (
-              <option key={guestCount} value={guestCount}>
-                {guestCount}
+            {[1, 2, 3, 4, 5, 6].map((adultCount) => (
+              <option key={adultCount} value={adultCount}>
+                {adultCount}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label htmlFor="children">
+          <span>Niños</span>
+          <select
+            id="children"
+            value={children}
+            onChange={(event) => setChildren(event.target.value)}
+            disabled={attending === 'no'}
+          >
+            {[0, 1, 2, 3, 4, 5, 6].map((childCount) => (
+              <option key={childCount} value={childCount}>
+                {childCount}
               </option>
             ))}
           </select>

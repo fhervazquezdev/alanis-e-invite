@@ -285,7 +285,9 @@ textarea:focus {
 }
 
 .rsvp-controls {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
 
 .attendance-field {
