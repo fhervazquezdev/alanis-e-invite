@@ -25,12 +25,6 @@ body {
   overflow-x: hidden;
 }
 
-button,
-input,
-select {
-  font: inherit;
-}
-
 .page {
   min-height: 100vh;
   display: grid;
@@ -215,133 +209,78 @@ h1 {
   line-height: 1.2;
 }
 
-.rsvp {
+.itinerary {
   display: grid;
-  gap: 8px;
+  gap: 12px;
   width: 100%;
   margin-top: auto;
-  padding: 14px;
+  padding: 16px;
   border: 1px solid rgba(151, 91, 103, 0.2);
   border-radius: 20px;
-  background: #fffaf4;
-  box-shadow: none;
+  background: rgba(255, 250, 244, 0.88);
 }
 
-.rsvp p {
+.itinerary-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.itinerary-heading svg {
+  flex: 0 0 auto;
+  color: var(--rose);
+}
+
+.itinerary h2 {
   margin: 0;
   color: var(--rose);
   font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1;
 }
 
-.rsvp label {
-  display: grid;
-  gap: 4px;
-  text-align: left;
-}
-
-.rsvp label span,
-.attendance-field > span {
+.itinerary-heading p {
+  margin: 3px 0 0;
   color: #8a7372;
-  font-size: 0.64rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-input,
-select,
-textarea {
-  width: 100%;
-  border: 1px solid rgba(151, 91, 103, 0.18);
-  border-radius: 12px;
-  color: var(--ink);
-  background: #fff;
-  outline: none;
-  transition:
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    background 160ms ease;
+.itinerary-table {
+  border-top: 1px solid var(--line);
 }
 
-input,
-select {
-  min-height: 34px;
-  padding: 0 10px;
-}
-
-textarea {
-  min-height: 68px;
-  padding: 8px 10px;
-  resize: vertical;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: rgba(156, 83, 100, 0.58);
-  background: #fff;
-  box-shadow: none;
-}
-
-.rsvp-controls {
+.itinerary-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.attendance-field {
-  display: grid;
-  gap: 4px;
+  grid-template-columns: minmax(94px, 0.72fr) 1.65fr;
+  gap: 10px;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 2px;
+  border-bottom: 1px solid rgba(151, 91, 103, 0.16);
+  color: #604a4d;
+  font-size: 0.78rem;
+  line-height: 1.2;
   text-align: left;
 }
 
-.attendance {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 4px;
-  border: 1px solid rgba(151, 91, 103, 0.18);
-  border-radius: 14px;
-  background: #fff;
+.itinerary-row time {
+  color: var(--rose);
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 0.85rem;
 }
 
-.attendance button {
+.itinerary-labels {
   min-height: 30px;
-  padding: 0 8px;
-  border: 0;
-  border-radius: 10px;
-  color: #755b5e;
-  background: transparent;
-  cursor: pointer;
-  font-size: 0.78rem;
-}
-
-.attendance button.selected {
-  color: #fffaf4;
-  background: linear-gradient(135deg, #9c5364, #c78194);
-  box-shadow: none;
-}
-
-.whatsapp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  min-height: 38px;
-  border: 0;
-  border-radius: 999px;
-  color: #fffaf4;
-  background: linear-gradient(135deg, #8f4d5f, #c78194);
-  box-shadow: none;
-  cursor: pointer;
-  transition:
-    transform 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.whatsapp:hover {
-  transform: translateY(-2px);
-  box-shadow: none;
+  padding-block: 7px 4px;
+  color: #8a7372;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 @keyframes inviteIn {
@@ -415,6 +354,21 @@ textarea:focus {
   .details span {
     font-size: 0.69rem;
   }
+
+  .itinerary {
+    padding: 13px;
+  }
+
+  .itinerary-row {
+    grid-template-columns: minmax(88px, 0.72fr) 1.65fr;
+    gap: 7px;
+    min-height: 34px;
+    font-size: 0.73rem;
+  }
+
+  .itinerary-row time {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 380px) {
@@ -427,8 +381,8 @@ textarea:focus {
     font-size: 0.9rem;
   }
 
-  .rsvp {
-    padding: 10px;
+  .itinerary-row {
+    grid-template-columns: 83px 1fr;
   }
 }
 

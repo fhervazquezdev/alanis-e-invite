@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   CalendarDays,
   Church,
+  Clock3,
   Gift,
   MapPin,
-  MessageCircle,
   Navigation,
   Shirt,
 } from 'lucide-react';
@@ -15,143 +15,15 @@ import '@fontsource/great-vibes/400.css';
 import './styles.css';
 
 const mapUrl = 'https://maps.app.goo.gl/gtKfmiqHxifdzhKw5';
-const whatsappUrl = 'https://api.whatsapp.com/send?phone=526861896576';
-
-function buildWhatsAppText({ name, attending, adults, children, note }) {
-  const adultCount = Number(adults);
-  const childCount = Number(children);
-  const response =
-    attending === 'yes'
-      ? `Sí asistiré con ${adultCount} ${adultCount === 1 ? 'adulto' : 'adultos'} y ${childCount} ${
-          childCount === 1 ? 'niño' : 'niños'
-        }.`
-      : 'No podré asistir.';
-
-  const lines = [
-    'Hola, quiero confirmar mi asistencia al cumpleaños y bautizo de Alanis.',
-    `Nombre: ${name.trim()}`,
-    `Respuesta: ${response}`,
-  ];
-
-  if (note.trim()) {
-    lines.push(`Mensaje: ${note.trim()}`);
-  }
-
-  return lines.join('\n');
-}
-
-function RsvpForm() {
-  const [name, setName] = useState('');
-  const [attending, setAttending] = useState('yes');
-  const [adults, setAdults] = useState('1');
-  const [children, setChildren] = useState('0');
-  const [note, setNote] = useState('');
-
-  const message = useMemo(
-    () => buildWhatsAppText({ name, attending, adults, children, note }),
-    [name, attending, adults, children, note],
-  );
-
-  function submitRsvp(event) {
-    event.preventDefault();
-
-    if (!name.trim()) {
-      event.currentTarget.querySelector('#name')?.focus();
-      return;
-    }
-
-    const query = new URLSearchParams({ text: message });
-    window.open(`${whatsappUrl}&${query.toString()}`, '_blank', 'noopener,noreferrer');
-  }
-
-  return (
-    <form className="rsvp" onSubmit={submitRsvp}>
-      <p>Confirma tu asistencia aquí</p>
-
-      <label htmlFor="name">
-        <span>Nombre</span>
-        <input
-          id="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          placeholder="Tu nombre"
-          autoComplete="name"
-          required
-        />
-      </label>
-
-      <div className="attendance-field">
-        <span>¿Asistirás al evento?</span>
-        <div className="attendance" aria-label="Confirmar asistencia">
-          <button
-            type="button"
-            className={attending === 'yes' ? 'selected' : ''}
-            onClick={() => setAttending('yes')}
-          >
-            Sí, asistiré
-          </button>
-          <button
-            type="button"
-            className={attending === 'no' ? 'selected' : ''}
-            onClick={() => setAttending('no')}
-          >
-            No podré asistir
-          </button>
-        </div>
-      </div>
-
-      <div className="rsvp-controls">
-        <label htmlFor="adults">
-          <span>Adultos</span>
-          <select
-            id="adults"
-            value={adults}
-            onChange={(event) => setAdults(event.target.value)}
-            disabled={attending === 'no'}
-          >
-            {[1, 2, 3, 4, 5, 6].map((adultCount) => (
-              <option key={adultCount} value={adultCount}>
-                {adultCount}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label htmlFor="children">
-          <span>Niños</span>
-          <select
-            id="children"
-            value={children}
-            onChange={(event) => setChildren(event.target.value)}
-            disabled={attending === 'no'}
-          >
-            {[0, 1, 2, 3, 4, 5, 6].map((childCount) => (
-              <option key={childCount} value={childCount}>
-                {childCount}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      <label htmlFor="note">
-        <span>Mensaje opcional</span>
-        <textarea
-          id="note"
-          value={note}
-          onChange={(event) => setNote(event.target.value)}
-          placeholder="Ej. Vamos con mucho gusto / Muchas felicidades"
-          rows="3"
-        />
-      </label>
-
-      <button className="whatsapp" type="submit">
-        <MessageCircle size={17} strokeWidth={1.8} aria-hidden="true" />
-        Confirmar
-      </button>
-    </form>
-  );
-}
+const itinerary = [
+  ['3:00 pm', 'Recepción de invitados'],
+  ['3:00 – 5:00 pm', 'Degustación de snacks y postres'],
+  ['5:00 pm', 'Servicio de comida'],
+  ['6:00 pm', 'Romper la piñata'],
+  ['6:30 pm', 'Las Mañanitas y partida del pastel'],
+  ['7:30 pm', 'Apertura de regalos (opcional)'],
+  ['8:00 pm', 'Fin del evento'],
+];
 
 function App() {
   return (
@@ -213,7 +85,28 @@ function App() {
             </article>
           </section>
 
-          <RsvpForm />
+          <section className="itinerary" aria-labelledby="itinerary-title">
+            <div className="itinerary-heading">
+              <Clock3 size={18} strokeWidth={1.7} aria-hidden="true" />
+              <div>
+                <h2 id="itinerary-title">Itinerario</h2>
+                <p>Sábado 14 de noviembre · Jardín Valash</p>
+              </div>
+            </div>
+
+            <div className="itinerary-table" role="table" aria-label="Itinerario del evento">
+              <div className="itinerary-row itinerary-labels" role="row">
+                <span role="columnheader">Horario</span>
+                <span role="columnheader">Actividad</span>
+              </div>
+              {itinerary.map(([time, activity]) => (
+                <div className="itinerary-row" role="row" key={`${time}-${activity}`}>
+                  <time role="cell">{time}</time>
+                  <span role="cell">{activity}</span>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </section>
     </main>
